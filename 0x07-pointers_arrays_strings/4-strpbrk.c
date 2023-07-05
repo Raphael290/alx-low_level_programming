@@ -1,22 +1,29 @@
 #include "main.h"
+#include <stdio.h>
 /**
- * _strpbrk - Entry point
- * @s: input
- * @accept: input
- * Return: Always 0 (Success)
+ * _strpbrk - prints the consecutive caracters of s1 that are in s2.
+ * @s: source string
+ * @accept: searching string
+ *
+ * Return: new string.
  */
 char *_strpbrk(char *s, char *accept)
 {
-                int k;
-                while (*s)
-                {
-                        for (k = 0; accept[k]; k++)
-                        {
-                        if (*s == accept[k])
-                        return (s);
-                        }
-                s++;
-                }
+	unsigned int i, j;
 
-        return ('\0');
+	for (i = 0; *(s + i); i++)
+	{
+		for (j = 0; *(accept + j); j++)
+		{
+			if (*(s + i) == *(accept + j))
+			{
+				break;
+			}
+		}
+		if (*(accept + j) != '\0')
+		{
+			return (s + i);
+		}
+	}
+	return (0);
 }
